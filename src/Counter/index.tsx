@@ -16,15 +16,17 @@ const Item = styled(Paper)(({ theme }) => ({
 
 type CounterProps = {
   min?: number;
+  startCount?: number;
   type?: string;
 } & typeof defaultProps;
 
 const defaultProps = {
   min: 0,
+  startCount: 0,
 };
 
-function Counter({ type } : CounterProps) {
-  const [count, setCount] = useState(0);
+function Counter({ startCount, type } : CounterProps) {
+  const [count, setCount] = useState(startCount);
 
   const handleIncrease = () => {
     setCount(count + 1);

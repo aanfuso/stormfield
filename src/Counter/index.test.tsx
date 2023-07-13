@@ -10,6 +10,14 @@ test('renders a counter', () => {
   expect(counter).toHaveTextContent('0');
 });
 
+test('renders a counter that starts at a diffent value', () => {
+  render(<Counter startCount={7} />)
+  const counter = screen.getByTestId('counter');
+
+  expect(counter).not.toHaveTextContent('0');
+  expect(counter).toHaveTextContent('7');
+});
+
 test('increase counter when + is clicked', () => {
   render(<Counter />)
   const button = screen.getByTestId('increase-button');
@@ -23,7 +31,7 @@ test('increase counter when + is clicked', () => {
 });
 
 test('decrease counter when - is clicked', () => {
-  render(<Counter />)
+  render(<Counter startCount={5} />)
   const button = screen.getByTestId('decrease-button');
   const counter = screen.getByTestId('counter');
 
@@ -31,5 +39,5 @@ test('decrease counter when - is clicked', () => {
     userEvent.click(button);
   });
 
-  expect(counter).toHaveTextContent('-1');
+  expect(counter).toHaveTextContent('4');
 });
