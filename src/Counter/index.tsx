@@ -15,8 +15,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type CounterProps = {
-  type?: string;
   min?: number;
+  type?: string;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -24,14 +24,14 @@ const defaultProps = {
 };
 
 function Counter({ type } : CounterProps) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const handleIncrease = () => {
-    setCount(count + 1)
+    setCount(count + 1);
   }
 
   const handleDecrease = () => {
-    setCount(count - 1)
+    setCount(count - 1);
   }
 
   const counterText = type ? `${type}: ${count}` : count;

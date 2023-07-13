@@ -24,7 +24,7 @@ test('increase counter when + is clicked', () => {
   expect(counter).toContainHTML('1');
 });
 
-test('increase counter when - is clicked', () => {
+test('decrease counter when - is clicked', () => {
   const button = screen.getByTestId('decrease-button');
   const counter = screen.getByTestId('counter');
 
