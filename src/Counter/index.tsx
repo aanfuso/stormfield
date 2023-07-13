@@ -25,7 +25,7 @@ const defaultProps = {
   startCount: 0,
 };
 
-function Counter({ startCount, type } : CounterProps) {
+function Counter({ min, startCount, type } : CounterProps) {
   const [count, setCount] = useState(startCount);
 
   const handleIncrease = () => {
@@ -33,6 +33,8 @@ function Counter({ startCount, type } : CounterProps) {
   }
 
   const handleDecrease = () => {
+    if (count <= min) return;
+
     setCount(count - 1);
   }
 

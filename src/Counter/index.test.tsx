@@ -41,3 +41,15 @@ test('decrease counter when - is clicked', () => {
 
   expect(counter).toHaveTextContent('4');
 });
+
+test('not decrease counter below min value', () => {
+  render(<Counter />)
+  const button = screen.getByTestId('decrease-button');
+  const counter = screen.getByTestId('counter');
+
+  act(() => {
+    userEvent.click(button);
+  });
+
+  expect(counter).toHaveTextContent('0');
+});
