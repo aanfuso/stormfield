@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
+  Divider,
+  IconButton,
   Paper,
+  Stack,
 } from '@mui/material';
+import {
+  Add as AddIcon,
+  Remove as RemoveIcon,
+} from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,23 +47,29 @@ function Counter({ min, startCount, type } : CounterProps) {
   const counterText = type ? `${type}: ${count}` : count;
 
   return (
-    <>
-      <Button
+    <Stack
+      direction="row"
+      divider={<Divider orientation="vertical" flexItem />}
+      spacing={{ xs: 2, sm: 2 }}
+    >
+      <IconButton
+        size="large"
         onClick={handleDecrease}
         data-testid='decrease-button'
       >
-        -1
-      </Button>
+        <RemoveIcon fontSize="inherit" />
+      </IconButton>
       <Item data-testid='counter'>
         {counterText}
       </Item>
-      <Button
+      <IconButton
+          size="large"
         onClick={handleIncrease}
         data-testid='increase-button'
       >
-        +1
-      </Button>
-    </>
+        <AddIcon fontSize="inherit" />
+      </IconButton >
+    </Stack>
   );
 }
 
