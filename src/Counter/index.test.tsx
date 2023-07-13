@@ -3,17 +3,15 @@ import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Counter from './index';
 
-beforeEach(() => {
-  render(<Counter />)
-})
-
 test('renders a counter', () => {
+  render(<Counter />)
   const counter = screen.getByTestId('counter');
 
-  expect(counter).toContainHTML('0');
+  expect(counter).toHaveTextContent('0');
 });
 
 test('increase counter when + is clicked', () => {
+  render(<Counter />)
   const button = screen.getByTestId('increase-button');
   const counter = screen.getByTestId('counter');
 
@@ -21,10 +19,11 @@ test('increase counter when + is clicked', () => {
     userEvent.click(button);
   });
 
-  expect(counter).toContainHTML('1');
+  expect(counter).toHaveTextContent('1');
 });
 
 test('decrease counter when - is clicked', () => {
+  render(<Counter />)
   const button = screen.getByTestId('decrease-button');
   const counter = screen.getByTestId('counter');
 
@@ -32,5 +31,5 @@ test('decrease counter when - is clicked', () => {
     userEvent.click(button);
   });
 
-  expect(counter).toContainHTML('-1');
+  expect(counter).toHaveTextContent('-1');
 });
