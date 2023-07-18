@@ -11,7 +11,7 @@ test('renders the default amount of counters', () => {
 
   const countersCount = DEFAULT_COUNTERS.length;
 
-  const counters = screen.getAllByTestId('counter').length;
+  const counters = screen.getAllByTestId('-counter', { exact: false }).length;
 
   expect(counters).toBe(countersCount);
 });
