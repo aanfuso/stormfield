@@ -8,6 +8,7 @@ import {
 import {
   Add as AddIcon,
   Remove as RemoveIcon,
+  RestartAltRounded as RestartIcon,
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
@@ -34,6 +35,10 @@ const defaultProps = {
 function Counter({ min, startCount, type } : CounterProps) {
   const [count, setCount] = useState(startCount);
 
+  const handleRestart = () => {
+    setCount(startCount);
+  }
+
   const handleIncrease = () => {
     setCount(count + 1);
   }
@@ -50,6 +55,13 @@ function Counter({ min, startCount, type } : CounterProps) {
       divider={<Divider orientation="vertical" flexItem />}
       spacing={{ xs: 2, sm: 2 }}
     >
+      <IconButton
+        size="large"
+        onClick={handleRestart}
+        data-testid={`${type}-restart-button`}
+      >
+        <RestartIcon fontSize="inherit" />
+      </IconButton>
       <IconButton
         size="large"
         onClick={handleDecrease}
