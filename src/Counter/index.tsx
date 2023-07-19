@@ -8,6 +8,7 @@ import {
 import {
   Add as AddIcon,
   Remove as RemoveIcon,
+  RestartAltRounded as RestartIcon,
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
@@ -23,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 type CounterProps = {
   min?: number;
   startCount?: number;
-  type?: string;
+  type: string;
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -33,6 +34,10 @@ const defaultProps = {
 
 function Counter({ min, startCount, type } : CounterProps) {
   const [count, setCount] = useState(startCount);
+
+  const handleRestart = () => {
+    setCount(startCount);
+  }
 
   const handleIncrease = () => {
     setCount(count + 1);
@@ -44,8 +49,6 @@ function Counter({ min, startCount, type } : CounterProps) {
     setCount(count - 1);
   }
 
-  const counterText = type ? `${type}: ${count}` : count;
-
   return (
     <Stack
       direction="row"
@@ -54,18 +57,25 @@ function Counter({ min, startCount, type } : CounterProps) {
     >
       <IconButton
         size="large"
+        onClick={handleRestart}
+        data-testid={`${type}-restart-button`}
+      >
+        <RestartIcon fontSize="inherit" />
+      </IconButton>
+      <IconButton
+        size="large"
         onClick={handleDecrease}
-        data-testid='decrease-button'
+        data-testid={`${type}-decrease-button`}
       >
         <RemoveIcon fontSize="inherit" />
       </IconButton>
-      <Item data-testid='counter'>
-        {counterText}
+      <Item data-testid={`${type}-counter`}>
+        {`${type}: ${count}`}
       </Item>
       <IconButton
-          size="large"
+        size="large"
         onClick={handleIncrease}
-        data-testid='increase-button'
+        data-testid={`${type}-increase-button`}
       >
         <AddIcon fontSize="inherit" />
       </IconButton >
