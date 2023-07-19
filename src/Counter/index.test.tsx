@@ -21,7 +21,7 @@ test('renders a counter with restar, decrease and increase buttons', () => {
   expect(increseButton).not.toBe(null);
 });
 
-test('renders a counter that starts at a diffent value', () => {
+test('renders a counter that starts at a different value', () => {
   render(<Counter type="counter" startCount={7} />)
   const counter = screen.getByTestId('-counter', { exact: false });
 
@@ -29,7 +29,7 @@ test('renders a counter that starts at a diffent value', () => {
   expect(counter).toHaveTextContent('7');
 });
 
-test('increase counter when + is clicked', () => {
+test('increases counter when + is clicked', () => {
   render(<Counter type="counter" />)
   const button = screen.getByTestId('-increase-button', { exact: false });
   const counter = screen.getByTestId('-counter', { exact: false });
@@ -37,11 +37,10 @@ test('increase counter when + is clicked', () => {
   act(() => {
     userEvent.click(button);
   });
-
   expect(counter).toHaveTextContent('1');
 });
 
-test('decrease counter when - is clicked', () => {
+test('decreases counter when - is clicked', () => {
   render(<Counter type="counter" startCount={5} />)
   const button = screen.getByTestId('-decrease-button', { exact: false });
   const counter = screen.getByTestId('-counter', { exact: false });
@@ -53,7 +52,7 @@ test('decrease counter when - is clicked', () => {
   expect(counter).toHaveTextContent('4');
 });
 
-test('restart counter when restart is clicked', () => {
+test('restarts counter when restart is clicked', () => {
   render(<Counter type="counter" />)
   const increaseButton = screen.getByTestId('-increase-button', { exact: false });
   const restartButton = screen.getByTestId('-restart-button', { exact: false });
@@ -75,7 +74,7 @@ test('restart counter when restart is clicked', () => {
   expect(counter).toHaveTextContent('0');
 });
 
-test('not decrease counter below min value', () => {
+test('don not decreases counter below min value', () => {
   render(<Counter type="counter" />)
   const button = screen.getByTestId('-decrease-button', { exact: false });
   const counter = screen.getByTestId('-counter', { exact: false });
@@ -83,6 +82,5 @@ test('not decrease counter below min value', () => {
   act(() => {
     userEvent.click(button);
   });
-
   expect(counter).toHaveTextContent('0');
 });
