@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Divider,
   IconButton,
@@ -8,7 +8,6 @@ import {
 import {
   Add as AddIcon,
   Remove as RemoveIcon,
-  RestartAltRounded as RestartIcon,
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
@@ -22,33 +21,35 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type CounterProps = {
+  count: number;
+  dispatcher: Function;
   label?: string;
   min?: number;
-  startCount?: number;
   type: string;
-} & typeof defaultProps;
-
-const defaultProps = {
-  min: 0,
-  startCount: 0,
 };
 
-function Counter({ label, min, startCount, type } : CounterProps) {
-  const [count, setCount] = useState(startCount);
-
-  const handleRestart = () => {
-    setCount(startCount);
-  }
-
+function Counter({
+  count,
+  dispatcher,
+  label,
+  min = 0,
+  type,
+} : CounterProps) {
   const handleIncrease = () => {
-    setCount(count + 1);
-  }
+    dispatcher({
+      type: 'INCREASE',
+      payload: type,
+    });
+  };
 
   const handleDecrease = () => {
     if (count <= min) return;
 
-    setCount(count - 1);
-  }
+    dispatcher({
+      type: 'DECREASE',
+      payload: type,
+    });
+  };
 
   const counterText = label ? `${label}: ${count}` : count;
 
@@ -58,13 +59,6 @@ function Counter({ label, min, startCount, type } : CounterProps) {
       divider={<Divider orientation="vertical" flexItem />}
       spacing={{ xs: 2, sm: 2 }}
     >
-      <IconButton
-        size="large"
-        onClick={handleRestart}
-        data-testid={`${type}-restart-button`}
-      >
-        <RestartIcon fontSize="inherit" />
-      </IconButton>
       <IconButton
         size="large"
         onClick={handleDecrease}
@@ -85,7 +79,5 @@ function Counter({ label, min, startCount, type } : CounterProps) {
     </Stack>
   );
 }
-
-Counter.defaultProps = defaultProps;
 
 export default Counter;
