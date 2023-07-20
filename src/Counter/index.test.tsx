@@ -21,6 +21,20 @@ test('renders a counter with restar, decrease and increase buttons', () => {
   expect(increseButton).not.toBe(null);
 });
 
+test('renders a counter without a label if it is not present', () => {
+  render(<Counter type="counter" />)
+  const counter = screen.getByTestId('counter-counter', { exact: true });
+
+  expect(counter).toHaveTextContent('0');
+});
+
+test('renders a counter with label if its present', () => {
+  render(<Counter type="counter" label="Counter Label" />)
+  const counter = screen.getByTestId('counter-counter', { exact: true });
+
+  expect(counter).toHaveTextContent('Counter Label: 0');
+});
+
 test('renders a counter that starts at a different value', () => {
   render(<Counter type="counter" startCount={7} />)
   const counter = screen.getByTestId('-counter', { exact: false });

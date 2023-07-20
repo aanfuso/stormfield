@@ -1,9 +1,9 @@
 export const DEFAULT_COUNTERS = [
-  { type: 'white', symbol: '{W}' },
-  { type: 'blue', symbol: '{U}' },
-  { type: 'black', symbol: '{B}' },
-  { type: 'red', symbol: '{R}' },
-  { type: 'green', symbol: '{G}' },
-  { type: 'colorless', symbol: '{C}' },
-  { type: 'storm', symbol: '' },
+  { label: 'White', type: 'white', symbol: '{W}' },
+  { label: 'Blue', type: 'blue', symbol: '{U}' },
+  { label: 'Black', type: 'black', symbol: '{B}' },
+  { label: 'Red', type: 'red', symbol: '{R}' },
+  { label: 'Green', type: 'green', symbol: '{G}' },
+  { label: 'Colorless', type: 'colorless', symbol: '{C}' },
+  { label: 'Storm', type: 'storm', symbol: '' },
 ];
