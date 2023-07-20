@@ -9,8 +9,8 @@ import Counter from './Counter';
 import { DEFAULT_COUNTERS } from 'lib/constants';
 
 function App() {
-  const counters = DEFAULT_COUNTERS.map(({ type }) => (
-    <Counter key={`${type}-counter`} type={type} />
+  const counters = DEFAULT_COUNTERS.map(({ label, type }) => (
+    <Counter key={`${type}-counter`} label={label} type={type} />
   ));
 
   return (

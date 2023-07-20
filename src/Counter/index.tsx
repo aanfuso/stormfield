@@ -22,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type CounterProps = {
+  label?: string;
   min?: number;
   startCount?: number;
   type: string;
@@ -32,7 +33,7 @@ const defaultProps = {
   startCount: 0,
 };
 
-function Counter({ min, startCount, type } : CounterProps) {
+function Counter({ label, min, startCount, type } : CounterProps) {
   const [count, setCount] = useState(startCount);
 
   const handleRestart = () => {
@@ -48,6 +49,8 @@ function Counter({ min, startCount, type } : CounterProps) {
 
     setCount(count - 1);
   }
+
+  const counterText = label ? `${label}: ${count}` : count;
 
   return (
     <Stack
@@ -70,7 +73,7 @@ function Counter({ min, startCount, type } : CounterProps) {
         <RemoveIcon fontSize="inherit" />
       </IconButton>
       <Item data-testid={`${type}-counter`}>
-        {`${type}: ${count}`}
+        {counterText}
       </Item>
       <IconButton
         size="large"
