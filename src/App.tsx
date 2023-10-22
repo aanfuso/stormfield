@@ -31,15 +31,14 @@ function App() {
 
   return (
     <Layout>
-      <Stack spacing={{ xs: 1, sm: 2 }} >
-        {Counters}
-      </Stack>
-
       <Stack
-        direction="row"
-        justifyContent="center"
-        sx={{ py: 3 }}
+        height="100%"
+        direction="column"
+        justifyContent="space-evenly"
+        alignItems="stretch"
       >
+        {Counters}
+
         <Button
           variant="contained"
           onClick={() => handleReset()}
