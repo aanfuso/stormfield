@@ -1,17 +1,16 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import {
-  Box,
   Button,
   Stack,
 } from '@mui/material';
 
-import Counter from './Counter';
-
-import { reducer } from 'reducer'
-import { CounterType } from 'types/app'
-
+import Layout from 'lib/components/Layout';
 import { DEFAULT_COUNTERS } from 'lib/constants';
 
+import Counter from './Counter';
+
+import { reducer } from 'reducer';
+import { CounterType } from 'types/app';
 
 function App() {
   const [counters, dispatch] = useReducer(reducer, DEFAULT_COUNTERS);
@@ -27,11 +26,11 @@ function App() {
   ));
 
   const handleReset = () => {
-    dispatch({type: 'RESET'});
+    dispatch({ type: 'RESET' });
   }
 
   return (
-    <Box>
+    <Layout>
       <Stack spacing={{ xs: 1, sm: 2 }} >
         {Counters}
       </Stack>
@@ -49,7 +48,7 @@ function App() {
           Clear
         </Button>
       </Stack>
-    </Box>
+    </Layout>
   );
 };
 
