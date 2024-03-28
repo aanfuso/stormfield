@@ -2,26 +2,28 @@ import {
   CssBaseline,
   Container,
 } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
+import {
+  ThemeProvider,
+  createTheme,
+} from '@mui/material/styles';
 
-const containerStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100vh',
-  justifyContent: 'center',
-};
 
-const Layout = (props: any) => (
-  <ThemeProvider theme={{}}>
-    <CssBaseline />
+const theme = createTheme({
+  palette: {
+    primary: lime,
+    secondary: purple,
+  },
+});
 
-    <Container
-      maxWidth="sm"
-      sx={containerStyles}
-    >
+
+function Layout(props: any) {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       {props.children}
-    </Container>
-  </ThemeProvider>
-);
+    </ThemeProvider>
+  )
+};
 
 export default Layout;

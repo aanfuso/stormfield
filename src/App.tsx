@@ -46,6 +46,11 @@ function App() {
         >
           Clear
         </Button>
+
+        <Button variant="contained">Primary</Button>
+      <Button variant="contained" color="secondary" sx={{ ml: 2 }}>
+        Secondary
+      </Button>
       </Stack>
     </Layout>
   );
