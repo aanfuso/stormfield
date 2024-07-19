@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import App from './App';
 
-import { DEFAULT_COUNTERS } from 'lib/constants';
+import { DEFAULT_COUNTERS } from 'shared/constants';
 
 beforeEach(() => {
   render(<App />);

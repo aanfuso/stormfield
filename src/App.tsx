@@ -4,8 +4,8 @@ import {
   Stack,
 } from '@mui/material';
 
-import Layout from 'lib/components/Layout';
-import { DEFAULT_COUNTERS } from 'lib/constants';
+import Layout from './Layout';
+import { DEFAULT_COUNTERS } from 'shared/constants';
 
 import Counter from './Counter';
 
