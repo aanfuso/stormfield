@@ -1,9 +1,7 @@
-import React from 'react';
 import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Stack,
   Typography,
 } from '@mui/material';
