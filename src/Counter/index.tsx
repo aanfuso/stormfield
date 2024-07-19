@@ -61,7 +61,17 @@ function Counter({
       alignItems="center"
       textAlign="center"
     >
-      <Grid item xs={3}>
+      <Grid item xs={6}>
+        <Stack
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={{ xs: 2, sm: 2 }}
+        >
+          <Typography variant="h2">
+            {count}
+          </Typography>
           <IconButton
             size="large"
             onClick={handleDecrease}
@@ -69,32 +79,12 @@ function Counter({
           >
             {symbol}
           </IconButton>
-      </Grid>
-
-      <Grid item xs={6}>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          divider={<Divider orientation="vertical" flexItem />}
-          spacing={{ xs: 2, sm: 2 }}
-        >
-          <IconButton
-            size="large"
-            onClick={handleDecrease}
-            data-testid={`${type}-decrease-button`}
-          >
-            <RemoveIcon fontSize="inherit" />
-          </IconButton>
-          <Typography variant="h5">
-            {count}
-          </Typography>
           <IconButton
             size="large"
             onClick={handleIncrease}
             data-testid={`${type}-increase-button`}
           >
-            <AddIcon fontSize="inherit" />
+            <AddIcon fontSize="large" />
           </IconButton >
         </Stack>
       </Grid>
