@@ -69,7 +69,7 @@ function Counter({
           divider={<Divider orientation="vertical" flexItem />}
           spacing={{ xs: 2, sm: 2 }}
         >
-          <Typography variant="h2">
+          <Typography variant="h2" data-testid={`${type}-counter`}>
             {count}
           </Typography>
           <IconButton

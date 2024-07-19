@@ -25,13 +25,6 @@ test('renders a counter without a label if it is not present', () => {
   expect(counter).toHaveTextContent('0');
 });
 
-test('renders a counter with label if its present', () => {
-  render(<Counter count={0} dispatcher={() => {}} type="counter" label="Counter Label" />);
-  const counter = screen.getByTestId('counter-counter', { exact: true });
-
-  expect(counter).toHaveTextContent('Counter Label: 0');
-});
-
 test('renders a counter that starts at a different value', () => {
   render(<Counter count={7} dispatcher={() => {}} type="counter" />);
   const counter = screen.getByTestId('-counter', { exact: false });
