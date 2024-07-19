@@ -4,10 +4,10 @@ import {
   Stack,
 } from '@mui/material';
 
-import Layout from './Layout';
 import { DEFAULT_COUNTERS } from 'shared/constants';
 
 import Counter from './Counter';
+import Layout from './Layout';
 
 import { reducer } from 'reducer';
 import { CounterType } from 'types/app';

@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import {
   Add as AddIcon,
-  Remove as RemoveIcon,
   Thunderstorm as ThunderstormIcon,
 } from '@mui/icons-material';
 
