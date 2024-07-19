@@ -1,24 +1,29 @@
 import React from 'react';
 import {
   Divider,
+  Grid,
   IconButton,
   Paper,
   Stack,
+  Typography,
 } from '@mui/material';
 import {
   Add as AddIcon,
   Remove as RemoveIcon,
+  Thunderstorm as ThunderstormIcon,
 } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  flexGrow: 1,
-}));
+import { W, U, B, R, G, C } from 'shared/icons';
+
+const SYMBOLS_MAP = {
+  white: <W />,
+  blue: <U />,
+  black: <B />,
+  red: <R />,
+  green: <G />,
+  colorless: <C />,
+  storm: <ThunderstormIcon fontSize="large"/>,
+};
 
 type CounterProps = {
   count: number;
@@ -31,7 +36,6 @@ type CounterProps = {
 function Counter({
   count,
   dispatcher,
-  label,
   min = 0,
   type,
 } : CounterProps) {
@@ -51,32 +55,52 @@ function Counter({
     });
   };
 
-  const counterText = label ? `${label}: ${count}` : count;
+  const symbol = SYMBOLS_MAP[type as keyof typeof SYMBOLS_MAP];
 
   return (
-    <Stack
-      direction="row"
-      divider={<Divider orientation="vertical" flexItem />}
-      spacing={{ xs: 2, sm: 2 }}
+    <Grid container
+      justifyContent="center"
+      alignItems="center"
+      textAlign="center"
     >
-      <IconButton
-        size="large"
-        onClick={handleDecrease}
-        data-testid={`${type}-decrease-button`}
-      >
-        <RemoveIcon fontSize="inherit" />
-      </IconButton>
-      <Item data-testid={`${type}-counter`}>
-        {counterText}
-      </Item>
-      <IconButton
-        size="large"
-        onClick={handleIncrease}
-        data-testid={`${type}-increase-button`}
-      >
-        <AddIcon fontSize="inherit" />
-      </IconButton >
-    </Stack>
+      <Grid item xs={3}>
+          <IconButton
+            size="large"
+            onClick={handleDecrease}
+            data-testid={`${type}-decrease-button`}
+          >
+            {symbol}
+          </IconButton>
+      </Grid>
+
+      <Grid item xs={6}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={{ xs: 2, sm: 2 }}
+        >
+          <IconButton
+            size="large"
+            onClick={handleDecrease}
+            data-testid={`${type}-decrease-button`}
+          >
+            <RemoveIcon fontSize="inherit" />
+          </IconButton>
+          <Typography variant="h5">
+            {count}
+          </Typography>
+          <IconButton
+            size="large"
+            onClick={handleIncrease}
+            data-testid={`${type}-increase-button`}
+          >
+            <AddIcon fontSize="inherit" />
+          </IconButton >
+        </Stack>
+      </Grid>
+    </Grid>
   );
 }
 
