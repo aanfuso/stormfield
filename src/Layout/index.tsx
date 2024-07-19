@@ -4,6 +4,9 @@ import {
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
+import { base } from 'themes';
+
+
 const containerStyles = {
   display: 'flex',
   flexDirection: 'column',
@@ -12,7 +15,7 @@ const containerStyles = {
 };
 
 const Layout = (props: any) => (
-  <ThemeProvider theme={{}}>
+  <ThemeProvider theme={base}>
     <CssBaseline />
 
     <Container
